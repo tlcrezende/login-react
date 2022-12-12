@@ -1,7 +1,11 @@
-import jpIMG from './assets/jp.svg'
-import './styles.css'
+import { useState } from "react";
+import jpIMG from "./assets/jp.svg";
+import "./styles.css";
 
 function App() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <div className="container">
       <div className="container-login">
@@ -14,11 +18,21 @@ function App() {
             </span>
 
             <div className="wrap-input">
-              <input className="input" type="email" />
+              <input
+                className={email !== "" ? 'has-val input' : 'input'}
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
               <span className="focus-input" data-placeholder="Email"></span>
             </div>
             <div className="wrap-input">
-              <input className="input" type="password" />
+              <input
+                className={password !== "" ? 'has-val input' : 'input'}
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
               <span className="focus-input" data-placeholder="Password"></span>
             </div>
 
@@ -28,9 +42,10 @@ function App() {
 
             <div className="text-center">
               <span className="txt1">Não possui conta?</span>
-              <a className="txt2" href="#">Criar conta.</a>
+              <a className="txt2" href="#">
+                Criar conta.
+              </a>
             </div>
-
           </form>
         </div>
       </div>
